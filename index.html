@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crystal Run</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body class="dark">
+    <nav>
+        <div class="nav-content">
+            <div class="flex items-center gap-x-3">
+                <span class="text-3xl font-semibold tracking-tighter text-[var(--fg0)]">Crystal</span>
+                <span class="text-3xl font-semibold tracking-tighter text-[var(--accentBlue)]">Run.</span>
+            </div>
+            
+            <div class="flex items-center gap-x-10 text-sm font-medium">
+                <a href="#" onclick="switchTab(0)" class="nav-link active" id="tab-home">Home</a>
+              
+                <a href="#" onclick="switchTab(1)" class="nav-link" id="tab-downloads">Downloads</a>
+            </div>
+
+            <div class="flex items-center gap-x-4">
+                <button onclick="toggleTheme()" class="theme-toggle">
+                    <i class="fa-solid fa-moon" id="theme-icon"></i>
+                </button>
+
+                </button>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div id="content-home" class="tab-content">
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <h1 class="p-display">
+                        Find.<br>Delete.<br><span class="text-[var(--accentBlue)]">Instantly.</span>
+                    </h1>
+                    
+                    <p class="hero-subtitle">
+                        The fastest folder explorer for Windows. 
+                        Search instantly and delete massive folders with ease.
+                    </p>
+                    
+                    <button onclick="switchTab(1)" class="main-cta">
+                        <i class="fa-solid fa-download"></i>
+                        <span>Download Crystal Run</span>
+                    </button>
+                    
+                    <div class="version-info">
+                        <div class="flex items-center gap-x-2">
+                            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                            <span class="text-[var(--accentGreen)] font-medium">Windows 10 / 11</span>
+                        </div>
+                        <div class="text-[var(--grey1)]">• Version 1.4.2</div>
+                    </div>
+                </div>
+                
+                <div class="hero-image-container">
+                    <img src="/src/interface.png"
+                         alt="Crystal Run Interface" 
+                         class="hero-image">
+                    
+                    <div class="success-badge">
+                        <i class="fa-solid fa-check"></i>
+                        <span>Deleted 1.8 GB in 10 seconds</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="content-downloads" class="tab-content hidden">
+            <div class="downloads-container">
+                <div class="text-center mb-16">
+                    <h2 class="downloads-title">Download Crystal Run</h2>
+                    <p class="text-[var(--grey1)] text-xl">Available for Windows</p>
+                </div>
+                
+                <div class="windows-card">
+                    <div class="windows-logo-container">
+                        <img src="/src/windows.png" 
+                             alt="Windows Logo" 
+                             class="windows-logo">
+                    </div>
+                    <div class="font-semibold text-3xl text-center mb-2">Windows</div>
+                    <div class="text-center text-[var(--grey1)] mb-10">10 &amp; 11 (64-bit)</div>
+                    
+                    <button onclick="startDownload()" class="download-installer-btn">
+                        Download Crystalrun.exe
+                    </button>
+                    <div class="text-center text-xs text-[var(--grey1)] mt-6">Trusted by 100+ Users.</div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="text-sm font-medium">
+                Crystal Run © 2026
+            </div>
+            
+            <div class="socials">
+                <a href="https://discord.gg/F7HFfXspZy/" class="social-link">
+                    <i class="fa-brands fa-discord"></i>
+                    <span>Discord</span>
+                </a>
+                <a href="https://github.com/noaa-apt/Crystal-Run/" class="social-link">
+                    <i class="fa-brands fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+            </div>
+            
+            <div class="text-xs text-[var(--grey1)]">
+                Made with 💖 by nikothewerst & noaa-apt@github
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentTheme = 'dark';
+
+        function toggleTheme() {
+            if (currentTheme === 'dark') {
+                document.documentElement.classList.add('light');
+                currentTheme = 'light';
+                document.getElementById('theme-icon').classList.remove('fa-moon');
+                document.getElementById('theme-icon').classList.add('fa-sun');
+            } else {
+                document.documentElement.classList.remove('light');
+                currentTheme = 'dark';
+                document.getElementById('theme-icon').classList.add('fa-moon');
+                document.getElementById('theme-icon').classList.remove('fa-sun');
+            }
+        }
+
+        function switchTab(tab) {
+            const home = document.getElementById('content-home');
+            const downloads = document.getElementById('content-downloads');
+            
+            document.getElementById('tab-home').classList.remove('active');
+            document.getElementById('tab-downloads').classList.remove('active');
+            
+            if (tab === 0) {
+                home.classList.remove('hidden');
+                downloads.classList.add('hidden');
+                document.getElementById('tab-home').classList.add('active');
+            } else if (tab === 1) {
+                home.classList.add('hidden');
+                downloads.classList.remove('hidden');
+                document.getElementById('tab-downloads').classList.add('active');
+            }
+        }
+        function startDownload() {
+            const btn = event.currentTarget;
+            const originalText = btn.textContent;
+            
+            btn.textContent = "Redirecting...";
+            btn.disabled = true;
+
+            setTimeout(() => {
+                window.location.href = "https://example.com";
+            }, 800);
+        }
+        window.onload = function() {
+            switchTab(0);
+        };
+    </script>
+</body>
+</html>
